@@ -1,0 +1,65 @@
+.abc{
+	height:100%;
+	width:100%;
+	position:absolute;
+	
+}
+h1
+{
+	font-size:78px;
+    color:red;
+	font-family:chiller;
+	font-style:italic;
+	
+}
+
+body  {
+    background-image: url("chat.jpg");
+	 background-size: 2000px 1500px;
+	  background-repeat: no-repeat;
+}
+p{
+	font-family:chiller;
+	color:red;
+   font-size:30px;
+	
+
+}
+h4{
+	font-size:50px;
+	color:red;
+	text-align: left;
+	font-family:chiller;
+	
+}
+h3{
+	font-size:40px;
+	color:red;
+	text-align:center;
+	font-family:chiller;
+}
+h2{
+	font-size:70px;
+	color:red;
+	text-align:center;
+	font-family:chiller;
+}
+  display: inline-block;
+  float: center-left;
+}
+input {
+	font-size:25px;
+        width: 500px;
+        clear: both;
+    }
+	button{
+		font-size:36px;
+		font-family:chiller;
+		color:red;
+		 width: 500px;
+	}
+	pre{
+		font-family:chiller;
+	color:red;
+   font-size:30px;
+	}

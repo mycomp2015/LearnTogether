@@ -1,0 +1,21 @@
+<html ng-app="login">
+<head>
+<title>ChatsaapRocks</title>
+<link rel="stylesheet" type="text/css" href="login.css"></link>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js" type="text/javascript"></script>
+ <script type="text/javascript" src="/socket.io/socket.io.js"></script> 
+<script src="main.js"></script>
+</head>
+</head>
+<body>
+<p>welcome to chat</p>
+<form style="width: 500px"  ng-controller="chatControl" name="formChat" novalidate>
+<p>
+<input type="text" name="userInfo" ng-model="form.userInfo" required><br>
+</p>
+</form>
+</body>
+</html>

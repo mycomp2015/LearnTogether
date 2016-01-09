@@ -1,10 +1,78 @@
-<!DOCTYPE html>
-<html lang="en">
+<html >
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<title>Registration</title>
+<link rel="stylesheet" type="text/css" href="login.css"></link>
 
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular.min.js"></script>
+ <script type="text/javascript" src="/socket.io/socket.io.js"></script> 
+<script src="main.js"></script>
+</head>
+
+<body>
+<h2>CHATSAPP</h2>
+<h4>Home Page</h4>
+<form style="width: 500px" ng-app="register" ng-controller="registerControl" name="formRegister" novalidate>
+<p>Username:<br>
+<input type="hidden" name="action" ng-model="formModel.action">
+<input type="text" name="username" ng-model="formModel.username" required><br>
+<span style="color:red" ng-show="formRegister.username.$dirty && formRegister.username.$invalid">
+<span ng-show="formRegister.username.$error.required">required</span>
+</span>
+<p>FirstName:<br>
+<input type="hidden" name="action" ng-model="formModel.action">
+<input type="text" name="userFirstname" ng-model="formModel.userFirstname" required><br>
+<span style="color:red"ng-show="formRegister.userFirstname.$dirty && formRegister.userFirstname.$invalid">
+<span ng-show="formRegister.userFirstname.$error.required">required</span>
+</span>
+</p>
+<p>Lastname:<br>
+<input type="text" name="userLastname" ng-model="formModel.userLastname" required><br>
+<span style="color:red"ng-show="formRegister.userLastname.$dirty && formRegister.userLastname.$invalid">
+<span ng-show="formRegister.userLastname.$error.required">required</span>
+</span>
+</p>
+<p>Email:<br>
+<input type="email" name="useremail" ng-model="formModel.useremail" required><br>
+<span style="color:red" ng-show="formRegister.useremail.$dirty && formRegister.useremail.$invalid">
+<span ng-show="formRegister.useremail.$error.required">required</span>
+<span ng-show="formRegister.useremail.$error.email">This is not a valid email.</span>
+</span>
+</p>
+<p>phoneNumber:<br>
+<input type="text" name="userPhonenumber" ng-model="formModel.userPhonenumber" required><br>
+<span style="color:red" ng-show="formRegister.userPhonenumber.$dirty && formRegister.userPhonenumber.$invalid">>
+<span ng-show="formRegister.userPhonenumber.$error.required">required</span>
+</span>
+</p>
+<p>password:<br>
+<input type="password" name="passWord" ng-model="formModel.passWord" ng-minlength="8" 
+               ng-maxlength="20"    ng-pattern="/(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z])/"
+ng-class="{'has-error':formModel.passWord.$invalid && !formModel.passWord.$pristine}"			   ><br>
+<span style="color:red" ng-show="formRegister.passWord.$error.minlength">Passwords must be between 8 and 20 characters.</span>
+<span ng-show="formRegister.passWord.$error.pattern" class="error">
+          Must contain one lower and uppercase letter, and one non-alpha character (a number or a symbol.)</span>
+<span ng-show="formRegister.passWord.$error.required">required</span>
+</span>
+</p>
+<p>Confirm Password:<br>
+<input type="password" name="confirmPassword" ng-model="formModel.confirmPassword"
+ ng-class="{'has-error':formModel.confirmPassword.$invalid && !formModel.confirmPassword.$pristine}"required>
+<span style="color:red" ng-show="formRegister.confirmPassword.$dirty && formRegister.confirmPassword.$invalid">
+<span ng-show="formRegister.confirmPassword.$error.nomatch">mismatch</span>
+<span ng-show="formRegister.confirmPassword.$error.required">required</span>
+</span>
+</p>
+<button  ng-click="submit()" ng-disabled="formRegister.username.$dirty && formRegister.username.$invalid ||
+formRegister.userFirstname.$dirty && formRegister.userFirstname.$invalid ||
+formRegister.userLastname.$dirty && formRegister.userLastname.$invalid ||
+formRegister.useremail.$dirty && formRegister.useremail.$invalid||
+formRegister.userPhonenumber.$dirty && formRegister.userPhonenumber.$invalid ||
+formRegister.passWord.$dirty && formRegister.passWord.$invalid ||
+formRegister.confirmPassword.$dirty && formRegister.confirmPassword.$invalid">create</button><br><center>
+<button ng-click="login()">login</button></center>
+</p>
+<pre>{{formModel}}</pre>
+</form>
 </body>
 </html>
