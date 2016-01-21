@@ -7,6 +7,10 @@ var redis = require("redis"),client = redis.createClient();
 
 var io = require('socket.io');
 var vid;
+var Multiuser=[];
+var detail;
+var example;
+var check;
       var id;
 	  var username,status;
 	  var send;
@@ -24,7 +28,7 @@ var server=http.createServer(function (request, response) {
 	var filePath = '.' + request.url;
 	
 	if (filePath == './')
-		filePath = './index.html';
+		filePath = './sok.html';
 			var extname = path.extname(filePath);
 			
 			
@@ -68,13 +72,18 @@ var server=http.createServer(function (request, response) {
 }).listen(3000);
 io = io.listen(server); 
 io.sockets.on("connection",function(socket){
+	var  validation={
+		message:"fruits"
+	}
+	socket.send(JSON.stringify(validation));
+
     /*Associating the callback function to be executed when client visits the page and 
       websocket connection is made */
 
       
-   socket.on("message",function(data){
+  socket.on("message",function(data){
 		console.log("TEST"+data);
-        /*This event is triggered at the server side when client sends the data using socket.send() method */
+       This event is triggered at the server side when client sends the data using socket.send() method 
       var time = JSON.parse(data);
 	   
 
@@ -91,7 +100,7 @@ for(key in time.message) {
 			console.log("inside the if");
 			console.log("id=="+id);
 			data=JSON.stringify(time);
-			 client.hset("chatap", id, data, redis.print);
+			 client.hset("registereduser", id, data, redis.print);
 			 client.incr('id',redis.print);
 			}
 			else if(time.message[key]='login'){
@@ -100,7 +109,7 @@ for(key in time.message) {
 				 client.get('vid',function(err,reply){
 					 vid=reply;
 				console.log("vid=="+vid);
-			client.hset("e", vid, data, redis.print);
+			client.hset("loggeduser", vid, data, redis.print);
 			 client.incr('vid',redis.print);	
 			  });
 			}
@@ -119,8 +128,24 @@ for(key in time.message) {
 		
 			
 		 });
+		 client.hgetall("loggeduser", function (err, replies) {
 			
-	client.hgetall("chatap", function (err, replies) {
+			console.log("!!!!"+replies);
+			
+			detail=replies;
+			console.log("DETAIL->"+detail);
+			
+			for(var dKey in detail)
+			{
+				var det=JSON.parse(detail[dKey]);
+				console.log("=========================="+det.message.user.length);
+				console.log("222222222"+det.message);
+				console.log("&&&&&&&&&&&&&&&&&&&&&"+dKey+"&&&&&&&&&&&&&"+det.message.user);
+				
+					Multiuser.push(det.message.user);
+			}
+				console.log("MULTIUSER"+Multiuser);
+	client.hgetall("registereduser", function (err, replies) {
     console.log(replies);
 	send=replies;
 	console.log("ID"+send);
@@ -128,31 +153,34 @@ for(key in time.message) {
 		for(var sKey in send) {
 			
 			var validation;
-			var check=JSON.parse(send[sKey]);
+			 check=JSON.parse(send[sKey]);
 			
 	
-   
+   console.log(" user valid "+check.message.username+"--"+time.message.user);
 	if(check.message.username==time.message.user && check.message.passWord==time.message.passWord)
 	{
 		
 	bool='true';
 	username=time.message.user;	
 	status='online';
+
+		
 	
 	}
 	else{
 		
-		console.log("user invalid");
+		//console.log("user invalid");
 		 validation={
 		message:"user invalid"
 	}
-		}
-	}
-if(bool=='true')
-{
 	
+		}
+		}
+		if(bool=='true'){
+	console.log("MULTI------USER"+Multiuser);
 		validation={
-		message:"user valid","username":time.message.user,"status":"online"
+			
+		message:"user valid","username":time.message.user,"status":"online","Onlineuser":Multiuser
 		
 		
 	}
@@ -164,13 +192,15 @@ else{
 	
 	socket.send(JSON.stringify(validation));
 }
-socket.send(JSON.stringify(validation));
+		
+
+
+
 		});
 		
-			/*client.hgetall("e", function (err, replies) {
-    console.log(replies);
-
-			});*/
+			console.log("MULTIyyyyyyyyyyyyyyyyyyyyUSER"+Multiuser);
+			});
+		
 		
           });
 	});

@@ -11,7 +11,7 @@
 
 <body>
 
-<form  ng-controller="loginControl" name="formLogin" novalidate>
+<div  ng-controller="loginControl " name="formLogin" novalidate>
 <h3>Welcome to chatsapp Login page</h3>
 <p>Username:
 <input type="hidden" name="action" ng-model="loginModel.action"  ><br>
@@ -26,10 +26,11 @@
 <span ng-show="formLogin.passWord.$error">Password is required</span>
 </span>
 </p>
+
 <button ng-click="submit()" ng-disabled="formLogin.user.$dirty && formLogin.user.$invalid ||
 formLogin.passWord.$dirty && formLogin.passWord.$invalid ">login</button>
+<button ng-click="Signup()">Signup</button></center>
 
-</form>
 
 
 </body>

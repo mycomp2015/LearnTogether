@@ -1,0 +1,13 @@
+$scope.processForm = function() {
+    // execute something
+    $scope.showTheForm = false;
+}
+
+
+
+<button ng-click="showTheForm = !showTheForm">Add a Task</button>
+
+<form ng-show="showTheForm" ng-submit="processForm()">
+    <button>Submit</button>
+    <button type="button" ng-click="showTheForm = false">Cancel</button>
+</form>

@@ -8,7 +8,7 @@ h1
 {
 	font-size:78px;
     color:red;
-	font-family:chiller;
+	font-family:Comic Sans MS;
 	font-style:italic;
 	
 }
@@ -19,9 +19,10 @@ body  {
 	  background-repeat: no-repeat;
 }
 p{
-	font-family:chiller;
+	font-family:Comic Sans MS;
 	color:red;
-   font-size:30px;
+   font-size:20px;
+   display: table-row;
 	
 
 }
@@ -29,37 +30,67 @@ h4{
 	font-size:50px;
 	color:red;
 	text-align: left;
-	font-family:chiller;
+	font-family:Comic Sans MS;
 	
 }
 h3{
 	font-size:40px;
 	color:red;
 	text-align:center;
-	font-family:chiller;
+	font-family:Comic Sans MS;
 }
 h2{
 	font-size:70px;
 	color:red;
 	text-align:center;
-	font-family:chiller;
+	font-family:Comic Sans MS;
 }
-  display: inline-block;
-  float: center-left;
-}
+  
+label { display: table-cell; }
+
+form  { display: table;      }
+
+
 input {
-	font-size:25px;
+	font-size:20px;
         width: 500px;
         clear: both;
+		display: table-cell;
     }
 	button{
 		font-size:36px;
-		font-family:chiller;
+		font-family:Comic Sans MS;
 		color:red;
-		 width: 500px;
+		 width: 300px;
 	}
 	pre{
-		font-family:chiller;
+		font-family:Comic Sans MS;
 	color:red;
-   font-size:30px;
+   font-size:20px;
 	}
+	.test{
+		border:1px solid red;
+		width:10%;
+		height:10%;
+		color:#FFF;
+	}
+	.userName{
+		font-family:Comic Sans MS;
+	color:red;
+   font-size:20px;
+	
+			}
+			#scrollArea {
+  height: 280px;
+  overflow: auto;
+}
+
+#bottom {
+  display: block;
+  margin-top: 100px;
+}
+.online{
+	border:1px solid red;
+		width:20%;
+		height:10%;
+}

@@ -1,4 +1,4 @@
-<html ng-app="login">
+<html ng-app="chatapp">
 <head>
 <title>ChatsaapRocks</title>
 <link rel="stylesheet" type="text/css" href="login.css"></link>
@@ -10,12 +10,22 @@
 <script src="main.js"></script>
 </head>
 </head>
-<body>
+<body ng-controller="chatControl">
 <p>welcome to chat</p>
-<form style="width: 500px"  ng-controller="chatControl" name="formChat" novalidate>
-<p>
-<input type="text" name="userInfo" ng-model="form.userInfo" required><br>
-</p>
-</form>
+<div class="userName">
+<img ng-src={{Imagepath}} style= height:24px; width:24px;>
+{{userInfo}}
+
+<p ng-repeat="msg in msgs"> {{userInfo}}-->{{msg}}</p>
+<button ng-click="sendMsg()">submit</button>
+<input type="text" ng-model="msg.text"/>
+
+</div>
+</img>
+</div>
+<div ><p>Online Users{{OnlineUsers}}</p></div>
+</div>
+
+
 </body>
 </html>
