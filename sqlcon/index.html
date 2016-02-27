@@ -1,0 +1,52 @@
+<html ng-app="EmpModule">
+<head>
+    <title>Random</title>
+   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js" type="text/javascript"></script>
+ <script type="text/javascript" src="/socket.io/socket.io.js"></script> 
+    
+ <script src="clientemp.js"></script>
+ <script>
+
+ </script>
+ 
+    </head>
+<body>
+<div id="one" ng-controller='empController' novalidate>
+<br>
+   Employee id:<input type="text" ng-model="empmodel.femp_id">
+   <br>
+     Employee name: <input type="text" ng-model="empmodel.femp_name">
+   <br>
+     Employee jobstatus: <input type="text" ng-model="empmodel.femp_status">
+   <br>
+     Employee Jobcode:  <input type="text" ng-model="empmodel.fjobcode">
+	<br>
+	
+<input type="button" value="Save" ng-click="save()">
+&nbsp;&nbsp;
+<input type="button" value="View" ng-click="view()">
+<div id="two" >
+<table>
+<tr> 
+<th>EmpId</th>
+<th>EmpName</th>
+<th>EmpStatus</th>
+<th>Jobcode</th>
+</tr>
+<tr ng-repeat="val in item">
+<td> {{val.emp_id}}</td>
+<td>{{ val.emp_name}}</td>
+<td>{{val.emp_status}}</td>
+<td>{{val.jobcode}}</td>
+</tr>
+<!-- <p>{{item}}</p>-->
+
+
+</table>
+</div>
+
+</div>
+ 
+</body>
+</html>
