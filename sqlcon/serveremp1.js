@@ -20,6 +20,7 @@ con.connect;	console.log('sql connected');
 
 
 //master 1
+
  io.sockets.on("connection",function(socket){
  
   socket.on('empdata',function(data){
