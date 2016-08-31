@@ -18,7 +18,7 @@ var con=mysql.createConnection
   database    :   'dev_test',	});	
 con.connect;	console.log('sql connected');
 
-
+//test release1
 
  io.sockets.on("connection",function(socket){
  
